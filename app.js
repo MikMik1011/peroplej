@@ -1,6 +1,7 @@
-let speed = 100;
+let baseFreq = 50;
 let scale = 0.33; // Image scale (I work on 1080p monitor)
 let fps = 30;
+let MAX_SPEED = 10;
 
 let canvas;
 let ctx;
@@ -27,11 +28,11 @@ function main(){
 
     dvd.x = Math.abs(Math.floor(Math.random() * canvas.width) - 256);
     dvd.y = Math.abs(Math.floor(Math.random() * canvas.height) - 256);
-    dvd.xspeed = (Math.random() * 20) - 10;
-    dvd.yspeed = (Math.random() * 20) - 10;
+    dvd.xspeed = (Math.random() * (MAX_SPEED * 2)) - MAX_SPEED;
+    dvd.yspeed = (Math.random() * (MAX_SPEED * 2)) - MAX_SPEED;
 
     let d = Math.sqrt(Math.pow(dvd.xspeed, 2) + Math.pow(dvd.yspeed, 2));
-    time = speed / d;
+    time = (d / (MAX_SPEED * 1.5)) * baseFreq;
     console.log(time);
 
     
